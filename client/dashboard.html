@@ -1,0 +1,45 @@
+<h1>Welcome, <span ng-bind="user.name"></span></h1>
+<p>Bucket List  |    <a href="#/dashboard">Home</a>  | <a href="#/">Logout</a></p>
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Title:</label>
+    <input type="text" class="col-sm-4" ng-model="newTopic.title">
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Description:</label>
+    <textarea class="col-sm-4" rows="4" ng-model="newTopic.description"></textarea>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Other Users:</label>
+    <select class="col-sm-4" ng-model="newTopic.category">
+      <option value="Owen">Owen</option>
+      <option value="KB">KB</option>
+      <option value="Rozen">Rozen</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-success col-md-1 col-md-offset-5" ng-click="createTopic(newTopic, user)">Add to List</button>
+  </div>
+</form>
+</div>
+
+
+	<div class="col-xl-12">
+		<table class="table table-striped table-hover" topics>
+			<thead>
+				<tr>
+					<th>Before I die I want to..</th>
+				</tr>
+			</thead>
+			<tbody ng-controller='topicController'>
+				<tr ng-repeat="topic in topics | filter: query" >
+					<td><input type="checkbox"><a ng-bind="topic.category"></a></td>
+					<td ng-bind="post.created_at | date: 'MMMM, dd, yyyy - h:ma'"></td>
+					<td><a ng-bind="topic.title"></a></td>
+					<td><a ng-bind="topic.description"></a></td>
+					<td><a ng-bind="topic.name" href="#/user/{{topic.user_id}}"></a></td>
+					<td ng-bind="topic.posts"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
